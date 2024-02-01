@@ -4,7 +4,6 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        binary = bin(n)
         co=0
         res = 0
 
