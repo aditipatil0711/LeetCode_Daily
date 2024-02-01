@@ -1,5 +1,11 @@
 # Write your MySQL query statement below
-SELECT r.contest_id, ROUND((100.00*COUNT(DISTINCT(r.user_id))/(SELECT COUNT(user_id) FROM Users)), 2) AS percentage
-FROM Register r
-GROUP BY r.contest_id
-ORDER BY percentage DESC, r.contest_id ASC
+SELECT
+    Register.contest_id,
+    ROUND((COUNT(Register.user_id) / (SELECT COUNT(DISTINCT user_id) FROM Users)) * 100, 2) as percentage #dont have to join just because there are two tables. For this type of question, use one table
+FROM
+    Register    
+GROUP BY
+    Register.contest_id
+ORDER BY
+    percentage DESC,
+    Register.contest_id ASC
