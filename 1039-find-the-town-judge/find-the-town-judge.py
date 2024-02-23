@@ -3,16 +3,16 @@ class Solution(object):
         
         if n == 1:
             return 1 if not trust else -1
-
-        trustCounts = [0] * (n + 1)
-        trustedByCounts = [0] * (n + 1)
+    
+        trusts = {}
+        isTrustedBy = {}
 
         for a, b in trust:
-            trustCounts[a] += 1
-            trustedByCounts[b] += 1
+            trusts[a] = trusts.get(a, 0) + 1
+            isTrustedBy[b] = isTrustedBy.get(b, 0) + 1
 
-        for i in range(1, n + 1):
-            if trustCounts[i] == 0 and trustedByCounts[i] == n - 1:
-                return i
+        for person in range(1, n + 1):
+            if trusts.get(person, 0) == 0 and isTrustedBy.get(person, 0) == n - 1:
+                return person
 
         return -1
