@@ -3,7 +3,7 @@ class Solution(object):
         """
         :type s: str
         :rtype: bool
-        
+        """
         i = 0
         j = len(s)-1
         while i<j:
@@ -19,13 +19,3 @@ class Solution(object):
 
 
         return True
-        """
-        s=s.lower()
-        pattern =r'[^a-z0-9]+'
-        a = re.sub(pattern,'',s)
-        
-        if(a[::-1]==a):
-            return True
-        else:
-            return False
-        
