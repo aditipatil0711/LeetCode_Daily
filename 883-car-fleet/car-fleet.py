@@ -7,7 +7,8 @@ class Solution(object):
         :rtype: int
         """
         n = len(speed)
-        v = [(position[i], speed[i]) for i in range(n)]
+        v = [[p,s] for p,s in zip(position,speed)]
+        #v = [(position[i], speed[i]) for i in range(n)]
         v.sort()
         time = [float(target - v[i][0]) / v[i][1] for i in range(n)]
 
