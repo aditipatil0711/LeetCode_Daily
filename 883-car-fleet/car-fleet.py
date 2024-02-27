@@ -6,18 +6,15 @@ class Solution(object):
         :type speed: List[int]
         :rtype: int
         """
-        n = len(speed)
-        v = [[p,s] for p,s in zip(position,speed)]
-        #v = [(position[i], speed[i]) for i in range(n)]
-        v.sort()
-        time = [float(target - v[i][0]) / v[i][1] for i in range(n)]
-
-        curr = float('-inf')
-        res = 0
-
-        for i in range(n - 1, -1, -1):
-            if time[i] > curr:
-                curr = time[i]
-                res += 1
-
-        return res
+        pair = []
+        for pos, spe in zip(position, speed):
+            pair.append((pos,spe))
+        pair.sort(reverse=True)
+        time = float(target - pair[0][0]) / pair[0][1]
+        num = 1
+        for p,s in pair:
+            cur_time = float(target - p) / s
+            if (float(target - p) / s) > time: 
+                num+=1
+                time = cur_time
+        return num
