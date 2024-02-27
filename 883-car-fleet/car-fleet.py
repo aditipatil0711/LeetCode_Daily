@@ -14,8 +14,8 @@ class Solution(object):
         position_speed = [[p, s] for p,s in zip(position, speed)]
         position_speed = sorted(position_speed, reverse=True)
         for p,s in position_speed:
-            no_of_runs = float(target-p)/s
-            stack.append(no_of_runs)
+            time = float(target-p)/s
+            stack.append(time)
             if len(stack) >= 2 and stack[-1] <= stack[-2]:
                 stack.pop()
 
