@@ -13,6 +13,7 @@ class Solution(object):
         stack = []
         position_speed = [[p, s] for p,s in zip(position, speed)]
         position_speed = sorted(position_speed, reverse=True)
+        
         for p,s in position_speed:
             time = float(target-p)/s
             stack.append(time)
