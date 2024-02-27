@@ -11,7 +11,7 @@ class Solution(object):
             if direction =="G":
                 x,y = x+dirX, y+dirY
             elif direction == "L":
-                dirX,dirY = -1*dirY, dirX # -ve scale of plane X
+                dirX,dirY = -1*dirY, dirX # -ve scale of plane Y and X and Y are flipping
             else:
                 dirX,dirY = dirY, -1*dirX
         return (x,y) == (0,0) or (dirX,dirY) !=(0,1)
