@@ -6,15 +6,17 @@ class Solution(object):
         :type speed: List[int]
         :rtype: int
         """
-        pair = []
-        for pos, spe in zip(position, speed):
-            pair.append((pos,spe))
-        pair.sort(reverse=True)
-        time = float(target - pair[0][0]) / pair[0][1]
-        num = 1
-        for p,s in pair:
-            cur_time = float(target - p) / s
-            if (float(target - p) / s) > time: 
-                num+=1
-                time = cur_time
-        return num
+        no_of_cars = len(position)
+        if no_of_cars <= 1:
+            return no_of_cars
+
+        stack = []
+        position_speed = [[p, s] for p,s in zip(position, speed)]
+        position_speed = sorted(position_speed, reverse=True)
+        for p,s in position_speed:
+            no_of_runs = float(target-p)/s
+            stack.append(no_of_runs)
+            if len(stack) >= 2 and stack[-1] <= stack[-2]:
+                stack.pop()
+
+        return len(stack)
