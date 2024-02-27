@@ -13,11 +13,12 @@ class Solution(object):
         stack = []
         position_speed = [[p, s] for p,s in zip(position, speed)]
         position_speed = sorted(position_speed, reverse=True)
-        
+        slow_car = 0
+        res =0
         for p,s in position_speed:
             time = float(target-p)/s
-            stack.append(time)
-            if len(stack) >= 2 and stack[-1] <= stack[-2]:
-                stack.pop()
+            if time> slow_car:
+                res +=1
+                slow_car = time
 
-        return len(stack)
+        return res
