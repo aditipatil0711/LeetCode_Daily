@@ -17,4 +17,4 @@ class Solution(object):
             elif i=="R":
                 x,y = x+1,y
 
-        return (x==y==0)
+        return (x==xi and y==yi)
