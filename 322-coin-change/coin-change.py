@@ -5,12 +5,12 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-        dp = [amount+1] * (amount +1)
-        dp[0] = 0
-
-        for a in range(1,amount +1):
+        step, seen = 0, 1 << amount
+        while seen & 1 != 1:
+            cur = seen
             for coin in coins:
-                if a-coin>=0:
-                    dp[a] = min(dp[a],1+dp[a-coin])
-
-        return dp[amount] if dp[amount] != amount+1 else -1
+                cur |= seen >> coin
+            if cur == seen:
+                return -1
+            step, seen = step + 1, cur
+        return step
