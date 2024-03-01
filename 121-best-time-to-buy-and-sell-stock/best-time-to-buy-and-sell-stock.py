@@ -9,12 +9,11 @@ class Solution(object):
         maxp=0
 
         while r<len(prices):
-            if prices[l]>prices[r]:
-               l+=1
-            else:
+            if prices[l]<prices[r]:
                 pr = prices[r]-prices[l]
-                if maxp<pr:
-                    maxp = max(pr,maxp)
-                r+=1
+                maxp = max(pr,maxp)
+            else:
+                l=r
+            r+=1
         return maxp
         
