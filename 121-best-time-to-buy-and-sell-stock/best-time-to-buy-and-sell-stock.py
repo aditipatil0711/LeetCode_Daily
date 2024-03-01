@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: int
         """
         l = 0
-        r = 1
+        r = 0
         maxp=0
 
         while r<len(prices):
