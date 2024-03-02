@@ -4,10 +4,6 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        array = []
-        for num in nums:
-            array.append(num**2)
-        
-        array.sort()
-        return array
-        
+        ans = [i*i for i in nums]
+        ans.sort()
+        return ans
