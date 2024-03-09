@@ -4,9 +4,9 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        l = 0
+        l= 0 
         r = 0
-        maxp=0
+        maxp =0
 
         while r<len(prices):
             if prices[l]<prices[r]:
@@ -15,5 +15,11 @@ class Solution(object):
             else:
                 l=r
             r+=1
+
         return maxp
+        
+
+
+
+        
         
