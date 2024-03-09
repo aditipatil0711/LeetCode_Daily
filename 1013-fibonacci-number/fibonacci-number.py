@@ -1,13 +1,12 @@
 class Solution(object):
-    def fib(self, n):
+    cache = {0:0,1:1}
+    def fib(self, N):
         """
         :type n: int
         :rtype: int
         """
-        if n == 0:
-            return 0
-        elif n == 1:
-            return 1
-        else:
-            return self.fib(n-1)+self.fib(n-2)
+        if N in self.cache:
+            return self.cache[N]
+        self.cache[N] = self.fib(N - 1) + self.fib(N - 2)
+        return self.cache[N]
         
