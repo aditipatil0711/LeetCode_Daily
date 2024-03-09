@@ -4,24 +4,24 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        sum_even = sum(nums[::2])
-        sum_odd = sum(nums[1::2])
+        s1 = sum(nums[::2])
+        s2 = sum(nums[1::2])
 
         count = 0
-        t_even = 0
-        t_odd = 0
+        t1 = 0
+        t2 = 0
 
-        for i, value in enumerate(nums):
+        for i, v in enumerate(nums):
             if i%2 == 0:
-                is_fair = t_odd + sum_even - t_even - value == t_even +sum_odd - t_odd
+                is_fair = (t2 + s1 - t1 - v == t1 +s2 - t2)
                 count += is_fair
             else:
-                is_fair = t_odd + sum_even - t_even == t_even +sum_odd - t_odd - value
+                is_fair = (t1 + s2 - t2 - v== t2 + s1 - t1)
                 count += is_fair
         
             if i%2 == 0:
-                t_even += value
+                t1 += v
             else:
-                t_odd+= value
+                t2 += v
         return count
 
