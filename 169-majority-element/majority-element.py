@@ -4,6 +4,6 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        nums.sort()
-        return nums[len(nums)//2]
+        counts = collections.Counter(nums)
+        return max(counts.keys(),key=counts.get)
         
