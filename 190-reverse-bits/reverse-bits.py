@@ -3,8 +3,7 @@ class Solution:
     # @return an integer
     def reverseBits(self, n):
         result = 0
-        for _ in range(32):  
-            result <<= 1         
-            result |= n & 1      
-            n >>= 1              
+        for i in range(32):  
+            bit = (n>>i) & 1
+            result = result | (bit<<(31-i))
         return result
