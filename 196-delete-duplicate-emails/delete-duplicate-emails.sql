@@ -1,3 +1,8 @@
 /* Write your T-SQL query statement below */
-Delete p1 from PErson p1 , Person p2 
-WHERE p1.Email = p2.email AND p1.id>p2.id
+WITH CTE AS (
+    SELECT Email,
+    ROW_NUMBER() OVER (PARTITION BY Email ORDER BY Id) AS Num
+    FROM Person 
+)
+DELETE FROM CTE WHERE Num > 1
+ 
