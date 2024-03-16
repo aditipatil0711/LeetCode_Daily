@@ -1,7 +1,5 @@
 /* Write your T-SQL query statement below 
-1. Join with same table
-2. group by number of people
-3.
+
 */
 
 WITH CTE AS
