@@ -21,9 +21,6 @@ class Solution(object):
                 list2 = list2.next
             tail = tail.next
     
-        if list1:
-            tail.next = list1
-        else:
-            tail.next = list2
+        tail.next = list1 or list2
 
         return dummy.next       
