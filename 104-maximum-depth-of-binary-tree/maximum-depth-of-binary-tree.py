@@ -27,7 +27,7 @@ class Solution(object):
 
     #MAx Depth recursive fn call
         traverse(root,depth)
-        print ("Final Res is " ,self.res)
+        
         return self.res
 
 
