@@ -19,8 +19,7 @@ class Solution(object):
             return False
         if leftroot.val != rightroot.val:
             return False
-        if (leftroot is None and rightroot is None) and (leftroot is not None and rightroot is not None):
-            return False
+           
         return self.check(leftroot.left,rightroot.right) and self.check(rightroot.left,leftroot.right)
 
             
