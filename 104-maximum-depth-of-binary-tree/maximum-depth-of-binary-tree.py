@@ -10,7 +10,16 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        if root == None:
-            return 0
-        return max(self.maxDepth(root.left),self.maxDepth(root.right))+1
-        
+        depth = 0
+        stack = []
+        if root is not None:
+            stack.append((1, root))
+        while stack !=[]:
+            d,root = stack.pop()
+            if root is not None:
+                depth = max(depth,d)
+                stack.append((d+1,root.left))
+                stack.append((d+1, root.right))
+        return depth
+
+            
