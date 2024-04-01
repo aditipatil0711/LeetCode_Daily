@@ -10,17 +10,16 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[str]
         """
-        res = []
-        def dfs(root,path):
-            if root:
-                path += str(root.val)
-                if not root.left and not root.right:
-                    res.append(path)
+        def dfs(node, path):
+            if node:
+                path += str(node.val)
+                if not node.left and not node.right:  # if reach a leaf
+                    paths.append(path)  # update paths 
                 else:
-                    path += '->'
-                    dfs(root.left,path)
-                    dfs(root.right,path)
+                    path += '->'  # extend the current path
+                    dfs(node.left, path)
+                    dfs(node.right, path)
 
-        dfs(root,'')
-        return res
-        
+        paths = []
+        dfs(root, '')
+        return paths
