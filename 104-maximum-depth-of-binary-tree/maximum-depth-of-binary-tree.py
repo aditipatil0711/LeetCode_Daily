@@ -11,15 +11,12 @@ class Solution(object):
         :rtype: int
         """
         depth = 0
-        stack = []
-        if root is not None:
-            stack.append((1, root))
-        while stack !=[]:
-            d,root = stack.pop()
-            if root is not None:
-                depth = max(depth,d)
-                stack.append((d+1,root.left))
-                stack.append((d+1, root.right))
-        return depth
+        
+        if root is None:
+            return 0
+        else:
+            lh = self.maxDepth(root.left)
+            rh = self.maxDepth(root.right)
+            return max(lh,rh)+1
 
             
