@@ -11,7 +11,7 @@ class Solution(object):
         :rtype: List[str]
         """
         res = []
-        def dfs(root,path,res):
+        def dfs(root,path):
             if not root:
                 return
             path += str(root.val)
@@ -19,9 +19,9 @@ class Solution(object):
                 res.append(path)
             else:
                 path += '->'
-                dfs(root.left,path,res)
-                dfs(root.right,path,res)
+                dfs(root.left,path)
+                dfs(root.right,path)
 
-        dfs(root,'',res)
+        dfs(root,'')
         return res
         
