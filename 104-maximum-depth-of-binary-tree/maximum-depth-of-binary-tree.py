@@ -23,7 +23,7 @@ class Solution(object):
 
             if node.left is None and node.right is None:
                 self.res = max(depth,self.res)
-                print ("Res is " ,self.res)
+
 
     #MAx Depth recursive fn call
         traverse(root,depth)
