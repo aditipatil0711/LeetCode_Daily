@@ -11,12 +11,24 @@ class Solution(object):
         :rtype: int
         """
         depth = 0
+        self.res = 0
         
-        if root is None:
-            return 0
-        else:
-            lh = self.maxDepth(root.left)
-            rh = self.maxDepth(root.right)
-            return max(lh,rh)+1
+
+        def traverse(node,depth):
+            if node is None:
+                return
+            depth +=1
+            traverse(node.left,depth)
+            traverse(node.right,depth)
+
+            if node.left is None and node.right is None:
+                self.res = max(depth,self.res)
+                print ("Res is " ,self.res)
+
+    #MAx Depth recursive fn call
+        traverse(root,depth)
+        print ("Final Res is " ,self.res)
+        return self.res
+
 
             
