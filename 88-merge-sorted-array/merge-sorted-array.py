@@ -11,4 +11,4 @@ class Solution(object):
             nums1[i+m] = nums2[i]
         
         
-        return nums1.sort()
+        nums1.sort()
