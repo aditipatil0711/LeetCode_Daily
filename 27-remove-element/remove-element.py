@@ -8,12 +8,8 @@ class Solution(object):
         i=0
         n = len(nums)
 
-        while i<n:
-            if (nums[i]==val):
-                nums[i]=nums[n-1]
-                n-=1
-            else:
+        for j in range(n):
+            if nums[j] != val:
+                nums[i] = nums[j]
                 i+=1
-
-        return n
-        
+        return i
