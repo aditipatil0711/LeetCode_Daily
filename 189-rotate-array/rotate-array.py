@@ -5,9 +5,10 @@ class Solution(object):
         :type k: int
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        k = k % len(nums)
         n = len(nums)
+        a = [0] * n
+        for i in range(n):
+            a[(i + k) % n] = nums[i]
+            
+        nums[:] = a
         
-        nums[0:n] = reversed(nums[0:n])
-        nums[0:k] = reversed(nums[0:k])
-        nums[k:n] = reversed(nums[k:n])
