@@ -10,10 +10,6 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        depth = 0
-        self.res = 0
-        
-
         def traverse(node,depth):
             if node is None:
                 return
@@ -23,12 +19,8 @@ class Solution(object):
 
             if node.left is None and node.right is None:
                 self.res = max(depth,self.res)
-
-
-    #MAx Depth recursive fn call
-        traverse(root,depth)
         
+        depth =0
+        self.res = 0
+        traverse(root,depth)
         return self.res
-
-
-            
