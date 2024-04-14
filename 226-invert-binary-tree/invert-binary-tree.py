@@ -13,10 +13,8 @@ class Solution(object):
         if not root:
             return None
 
-        root.right, root.left = root.left, root.right
-        
+        root.left, root.right = root.right, root.left
         self.invertTree(root.right)
         self.invertTree(root.left)
-        
+
         return root
-        
