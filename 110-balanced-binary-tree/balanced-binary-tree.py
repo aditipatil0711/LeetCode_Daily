@@ -10,19 +10,21 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-
+            
         def height(root):
-            if root == None:
+            if root is None:
                 return 0
             return max(height(root.left),height(root.right))+1
         
-        if root == None:
-                return True
+        if root is None:
+            return True
+
         lh = height(root.left)
         rh = height(root.right)
 
-        if (abs(lh-rh) <=1) and self.isBalanced(root.left) and self.isBalanced(root.right) :
+        if (abs(lh-rh)<=1) and self.isBalanced(root.left) and self.isBalanced(root.right):
             return True
+        return False
 
-        return False 
+
         
