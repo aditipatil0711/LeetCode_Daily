@@ -11,20 +11,14 @@ class Solution(object):
         :rtype: bool
         """
             
-        def height(root):
+        def dfs(root):
             if root is None:
                 return 0
-            return max(height(root.left),height(root.right))+1
+            lh = dfs(root.left)
+            rh = dfs(root.right)
+            if lh==-1 or rh==-1 or abs(lh-rh)>1:
+                return -1
+            else:
+                return max(lh,rh)+1
         
-        if root is None:
-            return True
-
-        lh = height(root.left)
-        rh = height(root.right)
-
-        if (abs(lh-rh)<=1) and self.isBalanced(root.left) and self.isBalanced(root.right):
-            return True
-        return False
-
-
-        
+        return dfs(root)!=-1
