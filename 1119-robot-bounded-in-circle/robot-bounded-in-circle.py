@@ -4,20 +4,16 @@ class Solution(object):
         :type instructions: str
         :rtype: bool
         """
-        dirX, dirY = 0,1 # facing north
-        x,y = 0,0 # initial position
+        
+        x,y = 0,0
+        dirX,dirY = 0,1
 
-        for direction in instructions:
-            if direction =="G":
-                x,y = x+dirX, y+dirY
-            elif direction == "L":
-                dirX,dirY = -1*dirY, dirX # -ve scale of plane Y and X and Y are flipping
+        for d in instructions:
+            if d == "G":
+                x,y = x+dirX,y+dirY
+            elif d == "L":
+                dirX,dirY = -dirY,dirX
             else:
-                dirX,dirY = dirY, -1*dirX
+                dirX,dirY = dirY,-1*dirX
         return (x,y) == (0,0) or (dirX,dirY) !=(0,1)
 
-        # return if you make a circle or direction changed atleast by 1
-                                       
-
-
-                                                                                                                                                                 
