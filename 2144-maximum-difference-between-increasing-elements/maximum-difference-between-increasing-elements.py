@@ -4,10 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        l =0
+        maxp= -1
+        l=0
         r=1
-        pr =0
-        maxp =-1
 
         while r<len(nums):
             if nums[r]>nums[l]:
@@ -17,3 +16,4 @@ class Solution(object):
                 l=r
             r+=1
         return maxp
+        
