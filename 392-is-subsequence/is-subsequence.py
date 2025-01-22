@@ -7,11 +7,16 @@ class Solution(object):
         """
         p_left =0
         p_right = 0
-        while p_left<len(s) and p_right<len(t):
+        if len(s)==0:
+            return True
+        while  p_right<len(t):
             if s[p_left] == t[p_right]:
                 p_left+=1
-            p_right+=1
+            if p_left == len(s):
+                return True
+            else:
+                p_right +=1
+        return False
         
-        return p_left==len(s)
 
         
