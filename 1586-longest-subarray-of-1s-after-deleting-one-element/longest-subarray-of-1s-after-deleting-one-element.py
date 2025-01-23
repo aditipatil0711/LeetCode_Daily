@@ -14,6 +14,7 @@ class Solution(object):
                 if nums[start] == 0:
                     zero_count-=1
                 start+=1
+            #Subtract 1 from end-start+1 coz we are deleting one element or one 0
             max_length = max(max_length,end-start)
         return max_length
         
