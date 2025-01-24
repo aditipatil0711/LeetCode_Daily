@@ -7,15 +7,12 @@ class Solution(object):
         """
         ans1 =[]
         ans2 = []
-        nums1 = list(set(nums1))
-        nums2 = list(set(nums2))
-        for i in range(len(nums1)):
-            if nums1[i] not in nums2:
-                ans1.append(nums1[i])
-            
-        for i in range(len(nums2)):
-            if nums2[i] not in nums1:
-                ans2.append(nums2[i])
+        nums1 = set(nums1)
+        nums2 = set(nums2)
+
+        ans1 = list(nums1-nums2)
+        ans2 = list(nums2-nums1)
+    
         
         return [ans1,ans2]
 
