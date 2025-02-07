@@ -10,16 +10,29 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        count = 0
+        if not root:
+            return 0
+        
+        stack = [(root,root.val)]
+        goodnodes = 0
 
-        def dfs(root,max_val):
-            if not root:
-                return 0
-            is_good = 1 if max_val <= root.val else 0
-            max_val = max(max_val,root.val)
+        while stack:
+            node, max_so_far = stack.pop()
 
-            lg = dfs(root.left,max_val)
-            rg = dfs(root.right,max_val)
+            if node.val >= max_so_far:
+                goodnodes+=1
+            
+            max_new = max(max_so_far,node.val)
 
-            return is_good + lg + rg
-        return dfs(root,root.val)
+            if node.right:
+                stack.append((node.right,max_new))
+            if node.left:
+                stack.append((node.left,max_new))
+
+        return goodnodes
+
+
+
+
+
+        
