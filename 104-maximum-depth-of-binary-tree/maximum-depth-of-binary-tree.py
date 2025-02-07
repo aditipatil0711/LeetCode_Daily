@@ -7,20 +7,14 @@
 class Solution(object):
     def maxDepth(self, root):
         """
-        :type root: TreeNode
+        :type root: Optional[TreeNode]
         :rtype: int
         """
-        def traverse(node,depth):
-            if node is None:
-                return
-            depth +=1
-            traverse(node.left,depth)
-            traverse(node.right,depth)
+        if root is None:
+            return 0
+        else:
+            leftH = self.maxDepth(root.left)
+            rightH = self.maxDepth(root.right)
+            return max(leftH,rightH)+1
 
-            if node.left is None and node.right is None:
-                self.res = max(depth,self.res)
         
-        depth =0
-        self.res = 0
-        traverse(root,depth)
-        return self.res
