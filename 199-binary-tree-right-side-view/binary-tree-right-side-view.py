@@ -10,18 +10,28 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[int]
         """
+        if not root:
+            return []
+
         res =[]
         q = deque([root])
 
         while q:
-            rightSide = None
+            right =None
 
             for i in range(len(q)):
                 node = q.popleft()
-                if node:
-                    rightSide = node
+
+                right = node #Right most of this level
+            
+                if node.left:
                     q.append(node.left)
+                if node.right:
                     q.append(node.right)
-            if rightSide:
-                res.append(rightSide.val)
+
+            res.append(right.val)
         return res
+
+        
+
+   
