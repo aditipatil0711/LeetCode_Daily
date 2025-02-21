@@ -1,44 +1,50 @@
-class Solution:
-    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+class Solution(object):
+    def calcEquation(self, equations, values, queries):
+        """
+        :type equations: List[List[str]]
+        :type values: List[float]
+        :type queries: List[List[str]]
+        :rtype: List[float]
+        """
+       
+        def buildAGraph(equations, values, graph):
+            
+            for eq, val in zip(equations, values):
+                a,b  = eq
 
-        graph = defaultdict(defaultdict)
+                if a not in graph:
+                    graph[a] = {}
+                if b not in graph:
+                    graph[b] = {}
 
-        def backtrack_evaluate(curr_node, target_node, acc_product, visited):
-            visited.add(curr_node)
-            ret = -1.0
-            neighbors = graph[curr_node]
-            if target_node in neighbors:
-                ret = acc_product * neighbors[target_node]
-            else:
-                for neighbor, value in neighbors.items():
-                    if neighbor in visited:
-                        continue
-                    ret = backtrack_evaluate(
-                        neighbor, target_node, acc_product * value, visited)
-                    if ret != -1.0:
-                        break
-            visited.remove(curr_node)
-            return ret
+                graph[a][b] = val
+                graph[b][a] = 1/val
+            return graph
 
-        # Step 1). build the graph from the equations
-        for (dividend, divisor), value in zip(equations, values):
-            # add nodes and two edges into the graph
-            graph[dividend][divisor] = value
-            graph[divisor][dividend] = 1 / value
+        def dfs(start, end, graph, visited ):
+            print(start , end ,visited)
+            if start not in graph or end not in graph:
+                return -1.0
+            if start == end:
+                return 1.0
+            visited.add(start)
+            for n in graph[start]:
+                if n not in visited:
+                    res = dfs(n,end, graph,visited)
+                    if res != -1.0:
+                        return res*graph[start][n]
+                
+            return -1.0
 
-        # Step 2). Evaluate each query via backtracking (DFS)
-        #  by verifying if there exists a path from dividend to divisor
-        results = []
-        for dividend, divisor in queries:
-            if dividend not in graph or divisor not in graph:
-                # case 1): either node does not exist
-                ret = -1.0
-            elif dividend == divisor:
-                # case 2): origin and destination are the same node
-                ret = 1.0
-            else:
-                visited = set()
-                ret = backtrack_evaluate(dividend, divisor, 1, visited)
-            results.append(ret)
+        graph = {}
+        graph  = buildAGraph(equations, values, graph)
+        print(graph)
+        res = []
+        for q in queries:
+            start, end = q
+            # calculate values from hashset by for
+            res.append(dfs(start, end, graph, set())) 
+        return res
 
-        return results
+
+
