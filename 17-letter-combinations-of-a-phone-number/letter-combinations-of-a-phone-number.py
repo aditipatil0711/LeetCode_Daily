@@ -4,26 +4,27 @@ class Solution(object):
         :type digits: str
         :rtype: List[str]
         """
-        dic={
-            '2': ['a','b','c'],
-            '3': ['d','e','f'],
-            '4': ['g','h','i'],
-            '5': ['j','k','l'],
-            '6': ['m','n','o'],
-            '7': ['p','q','r','s'],
-            '8': ['t','u','v'],
-            '9': ['w','x','y','z'],
+        res = []
+        digitToChar = {
+            "2":"abc",
+            "3":"def",
+            "4":"ghi",
+            "5":"jkl",
+            "6":"mno",
+            "7":"pqrs",
+            "8":"tuv",
+            "9":"wxyz"
         }
-        res=[]
-        for i in range(len(digits)):
-            if len(res)==0:
-                res=''.join(dic[digits[i]])
-            else:
-                temp=[]
-                for j in range(len(res)):
-                    temp2=dic[digits[i]]
-                    for k in range(len(temp2)):
-                        # print(res[j],temp2[k])
-                        temp.append(res[j]+temp2[k])
-                res=temp
+
+        def backtrack(i, currStr):
+            if len(currStr) == len(digits):
+                res.append(currStr)
+                return
+
+            for c in digitToChar[digits[i]]:
+                backtrack(i+1,currStr + c)
+        
+        if digits:
+            backtrack(0, "")
+
         return res
