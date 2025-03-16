@@ -1,22 +1,20 @@
-class Solution(object):
+class Solution:
     def rob(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        memo = {}  # Memoization dictionary
+        memo = {}
 
         def dfs(i):
-            if i >= len(nums):
-                return 0  # Base case
-            
+            if i>= len(nums):
+                return 0
             if i in memo:
-                return memo[i]  # Use stored result if available
+                return memo[i]
             
-            # Recurrence relation
-            memo[i] = max(nums[i] + dfs(i + 2), dfs(i + 1))  # Correct way to store in memo
-            
-            return memo[i]  # Return the computed value
+            memo[i] = max(nums[i] + dfs(i + 2), dfs(i + 1))
+            return memo[i]
 
-        return dfs(0)  # Start from the first house
+
+        return dfs(0)
             
