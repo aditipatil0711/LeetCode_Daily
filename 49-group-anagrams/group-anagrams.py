@@ -7,12 +7,14 @@ class Solution(object):
         hashtable = {}
 
         for i in strs:
-            sorted_word = ''.join(sorted(i))
-            if sorted_word not in hashtable:
-                hashtable[sorted_word] = []
-            
-            hashtable[sorted_word].append(i)
-        return list(hashtable.values())
-        
+            sortedword = ''.join(sorted(i))
+            if sortedword not in hashtable:
+                hashtable[sortedword] = []
+            hashtable[sortedword].append(i)
 
+        ans = list(hashtable.values())
+
+        return ans
+
+        
         
