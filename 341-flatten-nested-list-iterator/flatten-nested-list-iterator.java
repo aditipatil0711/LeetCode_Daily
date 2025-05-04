@@ -15,38 +15,38 @@
  *     public List<NestedInteger> getList();
  * }
  */
-
-import java.util.NoSuchElementException;
 public class NestedIterator implements Iterator<Integer> {
 
-    private Deque<NestedInteger> stack;
+    private List<Integer> ans = new ArrayList<Integer>();
+    private int position = 0;
+
 
     public NestedIterator(List<NestedInteger> nestedList) {
-            stack = new ArrayDeque(nestedList);
+        flattenedList(nestedList);
         
+    }
+    private void flattenedList(List<NestedInteger> nestedList){
+        for( NestedInteger nestedInteger : nestedList){
+            if(nestedInteger.isInteger()){
+                ans.add(nestedInteger.getInteger());
+            }
+            else{
+                flattenedList(nestedInteger.getList());
+            }
+        }
     }
 
     @Override
     public Integer next() {
-    if (!hasNext()) throw new NoSuchElementException();
-    return stack.removeFirst().getInteger();
+       // if (!hasNext()) throw new NoSuchElementException();
+        return ans.get(position++);
         
     }
 
     @Override
     public boolean hasNext() {
-    makeStackTopAnInteger();
-    return !stack.isEmpty();
+        return position < ans.size();     
         
-    }
-
-    private void makeStackTopAnInteger(){
-        while (!stack.isEmpty() && !stack.peekFirst().isInteger()){
-        List<NestedInteger> nestedList = stack.removeFirst().getList();
-            for (int i = nestedList.size() - 1; i >= 0; i--) {
-                stack.addFirst(nestedList.get(i));
-            }
-        }
     }
 }
 
