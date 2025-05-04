@@ -18,7 +18,7 @@ class Solution {
 
     }
 
-    public void dfs(char[][] grid, int r, int c){
+    private void dfs(char[][] grid, int r, int c){
         if(r<0 || c < 0 || r >= grid.length || c >= grid[0].length || grid[r][c] != '1' ){
             return;
         }
