@@ -16,12 +16,14 @@ class Solution {
 
         PriorityQueue<ListNode> pq = new PriorityQueue<>((ListNode a, ListNode b) -> a.val - b.val);
 
+        // add all elements in the list
         for (ListNode head : lists){
             if (head != null){
                 pq.add(head);
             }
         }
 
+        // Now Deal with values in 
         while (!pq.isEmpty()){
             ListNode smallest = pq.poll();
 
